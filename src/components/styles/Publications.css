@@ -1,0 +1,127 @@
+.publications-section {
+  margin: 0 auto;
+  padding: 120px 0px;
+  position: relative;
+}
+.pub-heading {
+  font-size: 70px;
+  line-height: 70px;
+  font-weight: 400;
+  text-align: center;
+  background: linear-gradient(0deg, #7f40ff, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-bottom: 80px;
+}
+.pub-heading > span {
+  font-weight: 300;
+}
+.pub-flex {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+.pub-papers {
+  flex: 1 1 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.pub-card {
+  display: block;
+  position: relative;
+  padding: 28px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: 0.35s;
+}
+.pub-card:hover {
+  color: inherit;
+  border-color: var(--accentColor);
+  background: rgba(194, 164, 255, 0.08);
+  transform: translateY(-4px);
+}
+.pub-card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0 0 10px 0;
+}
+.pub-authors {
+  font-size: 15px;
+  opacity: 0.75;
+  margin: 0 0 6px 0;
+}
+.pub-venue {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--accentColor);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pub-award {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #0b080c;
+  background: linear-gradient(135deg, #ffd36b, #ff9d3c);
+  padding: 4px 12px;
+  border-radius: 30px;
+  margin-bottom: 14px;
+}
+.pub-honors {
+  flex: 1 1 40%;
+  padding: 28px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+}
+.pub-honors h4 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 18px 0;
+  color: var(--accentColor);
+}
+.pub-honors ul {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.pub-honors li {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+@media only screen and (max-width: 1400px) {
+  .pub-heading {
+    font-size: 50px;
+    line-height: 50px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .publications-section {
+    padding: 70px 0px;
+    width: calc(100% - 25px);
+  }
+  .pub-flex {
+    flex-direction: column;
+  }
+  .pub-honors {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .pub-heading {
+    font-size: 45px;
+    line-height: 45px;
+    margin-bottom: 50px;
+  }
+}
