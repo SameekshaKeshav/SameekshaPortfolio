@@ -33,22 +33,3 @@ Everything is plain data/props — no CMS.
 | Publications & honors | `src/components/Publications.tsx` |
 | Tech-stack balls | `src/components/TechStack.tsx` (`techs` array) |
 | Links (email, phone, socials, resume) | `src/data/site.ts` |
-
-### Assets to add
-
-- **Photo** → `public/images/profile.jpg` (portrait, ~3:4). A placeholder shows until then.
-- **Resume** → `public/Sameeksha_Keshav_Resume.pdf` (what the "Resume" button links to).
-
-## Push to GitHub
-
-```bash
-cd /Users/skeshav/Documents/portfolio
-git init
-git add .
-git commit -m "Initial commit: portfolio"
-git branch -M main
-git remote add origin https://github.com/SameekshaKeshav/<repo-name>.git
-git push -u origin main
-```
-
-`node_modules/` and `dist/` are git-ignored — hosts install and build for you.
