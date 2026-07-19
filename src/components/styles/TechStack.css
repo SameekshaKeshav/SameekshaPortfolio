@@ -1,0 +1,94 @@
+.techstack {
+  width: 100%;
+  position: relative;
+  margin: auto;
+  padding: 80px 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.techstack h2 {
+  font-size: 70px;
+  text-align: center;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 0 0 20px 0;
+  background: linear-gradient(0deg, #7f40ff, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.tech-sphere-wrap {
+  width: 100%;
+  height: 620px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  position: relative;
+}
+.tech-sphere-wrap::after {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(127, 64, 255, 0.22),
+    transparent 65%
+  );
+  filter: blur(30px);
+  z-index: 0;
+  pointer-events: none;
+}
+.tech-sphere {
+  position: relative;
+  width: 1px;
+  height: 1px;
+  transform-style: preserve-3d;
+  z-index: 1;
+}
+.tech-tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #eae5ec;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(194, 164, 255, 0.35);
+  box-shadow: 0 0 18px rgba(127, 64, 255, 0.12);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  cursor: default;
+  will-change: transform, opacity;
+  transition: color 0.25s, border-color 0.25s, background 0.25s;
+}
+.tech-tag:hover {
+  color: #0b080c;
+  background: var(--accentColor);
+  border-color: var(--accentColor);
+  box-shadow: 0 0 24px rgba(194, 164, 255, 0.6);
+}
+@media only screen and (max-width: 900px) {
+  .techstack h2 {
+    font-size: 42px;
+  }
+  .tech-sphere-wrap {
+    height: 460px;
+  }
+  .tech-tag {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+  .tech-sphere-wrap::after {
+    width: 280px;
+    height: 280px;
+  }
+}

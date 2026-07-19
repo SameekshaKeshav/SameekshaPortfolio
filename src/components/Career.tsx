@@ -32,12 +32,6 @@ const careers: CareerItem[] = [
     year: "2024",
     desc: "On the observability team, built logs and metrics pipelines for Kubernetes-based distributed systems and engineered a zero-downtime Cosmos DB ETL migration (MongoDB API → Core API).",
   },
-  {
-    role: "AI Engineering Intern",
-    company: "Tavant Technologies",
-    year: "NOW",
-    desc: "Building an agentic AI travel-planning chatbot in Python with Ollama that reasons over backend data to generate reliable itinerary recommendations.",
-  },
 ];
 
 const Career = () => {

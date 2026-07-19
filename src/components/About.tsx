@@ -1,8 +1,23 @@
 import "./styles/About.css";
 
+const highlights = [
+  { value: "2+ yrs", label: "Industry experience — Microsoft, Samsung" },
+  { value: "3", label: "Publications — IEEE & arXiv" },
+  { value: "Best Paper", label: "IEEE CSITSS 2023" },
+  { value: "9.70/10", label: "Undergrad GPA · Silver Medalist" },
+];
+
 const About = () => {
   return (
     <div className="about-section" id="about">
+      <div className="about-highlights">
+        {highlights.map((h) => (
+          <div className="about-stat" key={h.label}>
+            <span className="about-stat-value">{h.value}</span>
+            <span className="about-stat-label">{h.label}</span>
+          </div>
+        ))}
+      </div>
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">

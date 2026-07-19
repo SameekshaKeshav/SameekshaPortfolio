@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { useEffect } from "react";
 import About from "./About";
 import Career from "./Career";
 import Contact from "./Contact";
@@ -9,29 +9,24 @@ import Publications from "./Publications";
 import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
+import TechStack from "./TechStack";
 import setSplitText from "./utils/splitText";
 import { setProgress } from "./Loading";
 import { useLoading } from "../context/LoadingProvider";
 
-const TechStack = lazy(() => import("./TechStack"));
-
 const MainContainer = () => {
   const { setLoading } = useLoading();
-  const [isDesktopView, setIsDesktopView] = useState<boolean>(
-    window.innerWidth > 1024
-  );
 
   useEffect(() => {
     const resizeHandler = () => {
       setSplitText();
-      setIsDesktopView(window.innerWidth > 1024);
     };
     resizeHandler();
     window.addEventListener("resize", resizeHandler);
     return () => {
       window.removeEventListener("resize", resizeHandler);
     };
-  }, [isDesktopView]);
+  }, []);
 
   useEffect(() => {
     const progress = setProgress((value) => setLoading(value));
@@ -62,11 +57,7 @@ const MainContainer = () => {
             <WhatIDo />
             <Career />
             <Work />
-            {isDesktopView && (
-              <Suspense fallback={<div style={{ height: "100vh" }} />}>
-                <TechStack />
-              </Suspense>
-            )}
+            <TechStack />
             <Publications />
             <Contact />
           </div>
