@@ -39,38 +39,6 @@ Everything is plain data/props — no CMS.
 - **Photo** → `public/images/profile.jpg` (portrait, ~3:4). A placeholder shows until then.
 - **Resume** → `public/Sameeksha_Keshav_Resume.pdf` (what the "Resume" button links to).
 
-## Hosting / Deployment
-
-The build output in `dist/` is fully static, so it can be hosted anywhere. Pick one:
-
-### Option A — Vercel (recommended, easiest)
-
-1. Push this folder to a GitHub repo (see "Push to GitHub" below).
-2. Go to <https://vercel.com>, sign in with GitHub, **Add New → Project**, import the repo.
-3. Vercel auto-detects Vite. Confirm: **Build Command** `npm run build`, **Output Directory** `dist`.
-4. Click **Deploy**. You get a live `https://<project>.vercel.app` URL, and every future `git push` redeploys automatically.
-
-### Option B — Netlify
-
-1. Push to GitHub.
-2. <https://app.netlify.com> → **Add new site → Import an existing project** → pick the repo.
-3. Build command `npm run build`, publish directory `dist` → **Deploy**.
-
-### Option C — GitHub Pages
-
-GitHub Pages serves from a subpath (`https://<user>.github.io/<repo>/`), so set the base
-path first. In `vite.config.ts` add `base: "/<repo-name>/"`, then:
-
-```bash
-npm run build
-npm install -D gh-pages
-npx gh-pages -d dist
-```
-
-Then in the repo: **Settings → Pages → Source: gh-pages branch**. Your site appears at
-`https://<your-username>.github.io/<repo-name>/`.
-(If you use a custom domain or a `<username>.github.io` repo, you can leave `base` as `/`.)
-
 ## Push to GitHub
 
 ```bash
