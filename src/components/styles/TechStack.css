@@ -92,3 +92,36 @@
     height: 280px;
   }
 }
+@media only screen and (max-width: 759px) {
+  .techstack {
+    padding: 56px 0 24px;
+    overflow: hidden;
+  }
+  .techstack h2 {
+    font-size: 32px;
+    line-height: 1.05;
+    padding: 0 16px;
+    margin-bottom: 0;
+  }
+  .tech-sphere-wrap {
+    width: 100%;
+    height: 340px;
+  }
+  .tech-sphere-wrap::after {
+    width: 220px;
+    height: 220px;
+  }
+  .tech-tag {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .tech-sphere-wrap {
+    height: 300px;
+  }
+  .tech-tag {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}

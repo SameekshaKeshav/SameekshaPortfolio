@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
@@ -9,7 +9,36 @@ import { site } from "../data/site";
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 export let smoother: ScrollSmoother;
 
+const navLinks = [
+  { href: "#about", text: "ABOUT" },
+  { href: "#work", text: "WORK" },
+  { href: "#publications", text: "RESEARCH" },
+  { href: "#contact", text: "CONTACT" },
+];
+
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.classList.toggle("menu-open", open);
+    return () => document.body.classList.remove("menu-open");
+  }, [open]);
+
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 768) setOpen(false);
+    };
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
   useEffect(() => {
     smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
@@ -39,10 +68,21 @@ const Navbar = () => {
       ScrollSmoother.refresh(true);
     });
   }, []);
+  const closeMenu = () => {
+    document.body.classList.remove("menu-open");
+    setOpen(false);
+  };
+
+  const goTo = (href: string) => (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    closeMenu();
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <>
-      <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
+      <div className={`header ${open ? "nav-open" : ""}`}>
+        <a href="/#" className="navbar-title" data-cursor="disable" onClick={closeMenu}>
           SK
         </a>
         <a
@@ -52,25 +92,48 @@ const Navbar = () => {
         >
           {site.email}
         </a>
+        <button
+          type="button"
+          className={`nav-toggle ${open ? "is-open" : ""}`}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          onClick={() => setOpen((value) => !value)}
+        >
+          <span />
+          <span />
+        </button>
         <ul>
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <a data-href={link.href} href={link.href}>
+                <HoverLinks text={link.text} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className={`nav-menu ${open ? "is-open" : ""}`}>
+        <ul>
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <a href={link.href} onClick={goTo(link.href)}>
+                {link.text}
+              </a>
+            </li>
+          ))}
           <li>
-            <a data-href="#about" href="#about">
-              <HoverLinks text="ABOUT" />
+            <a href={site.resume} target="_blank" rel="noreferrer" onClick={closeMenu}>
+              RESUME
             </a>
           </li>
           <li>
-            <a data-href="#work" href="#work">
-              <HoverLinks text="WORK" />
+            <a href={site.linkedin} target="_blank" rel="noreferrer" onClick={closeMenu}>
+              LINKEDIN
             </a>
           </li>
           <li>
-            <a data-href="#publications" href="#publications">
-              <HoverLinks text="RESEARCH" />
-            </a>
-          </li>
-          <li>
-            <a data-href="#contact" href="#contact">
-              <HoverLinks text="CONTACT" />
+            <a href={site.github} target="_blank" rel="noreferrer" onClick={closeMenu}>
+              GITHUB
             </a>
           </li>
         </ul>

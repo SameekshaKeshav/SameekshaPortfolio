@@ -119,6 +119,23 @@ body {
   flex-wrap: nowrap;
 }
 
+@media screen and (max-width: 767px) {
+  body {
+    --cWidth: calc(100% - 40px);
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+  #about,
+  #work,
+  #publications,
+  #contact,
+  .whatIDO,
+  .career-section,
+  .techstack {
+    scroll-margin-top: 76px;
+  }
+}
 @media screen and (min-width: 768px) {
   body {
     --cWidth: 94%;

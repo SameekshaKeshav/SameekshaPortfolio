@@ -46,8 +46,13 @@ const TechStack = () => {
 
   useEffect(() => {
     const base = fibonacciSphere(techs.length);
-    const radius =
-      Math.min(window.innerWidth * 0.34, 300) * (window.innerWidth < 600 ? 0.8 : 1);
+    const getRadius = () =>
+      Math.max(90, Math.min(window.innerWidth * 0.34, 300));
+    let radius = getRadius();
+    const onResize = () => {
+      radius = getRadius();
+    };
+    window.addEventListener("resize", onResize);
 
     let rotX = -0.3;
     let rotY = 0;
@@ -72,10 +77,23 @@ const TechStack = () => {
       targetVelX = 0.0006;
       targetVelY = 0.0016;
     };
+    const onTouchMove = (e: TouchEvent) => {
+      const el = containerRef.current;
+      if (!el || !e.touches[0]) return;
+      const rect = el.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.touches[0].clientX - cx) / rect.width;
+      const dy = (e.touches[0].clientY - cy) / rect.height;
+      targetVelY = dx * 0.02;
+      targetVelX = -dy * 0.02;
+    };
 
     const el = containerRef.current;
     el?.addEventListener("mousemove", onMove);
     el?.addEventListener("mouseleave", onLeave);
+    el?.addEventListener("touchmove", onTouchMove, { passive: true });
+    el?.addEventListener("touchend", onLeave);
 
     let raf = 0;
     const render = () => {
@@ -117,8 +135,11 @@ const TechStack = () => {
 
     return () => {
       cancelAnimationFrame(raf);
+      window.removeEventListener("resize", onResize);
       el?.removeEventListener("mousemove", onMove);
       el?.removeEventListener("mouseleave", onLeave);
+      el?.removeEventListener("touchmove", onTouchMove);
+      el?.removeEventListener("touchend", onLeave);
     };
   }, []);
 

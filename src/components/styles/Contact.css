@@ -71,6 +71,23 @@ a.contact-social {
     margin-top: 0px;
   }
 }
+@media only screen and (max-width: 767px) {
+  .contact-section h3 {
+    font-size: 36px;
+  }
+  .contact-box a,
+  .contact-flex p {
+    overflow-wrap: anywhere;
+  }
+  .contact-section {
+    padding-bottom: calc(48px + env(safe-area-inset-bottom));
+  }
+  a.contact-social {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
 @media only screen and (max-width: 900px) {
   .contact-flex {
     flex-direction: column;

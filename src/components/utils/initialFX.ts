@@ -20,8 +20,11 @@ export function initialFX() {
     delay: 1,
   });
 
+  const narrow = window.innerWidth < 768;
   var landingText = new SplitText(
-    [".landing-info h3", ".landing-intro h2", ".landing-intro h1"],
+    narrow
+      ? [".landing-info h3", ".landing-intro h2"]
+      : [".landing-info h3", ".landing-intro h2", ".landing-intro h1"],
     {
       type: "chars,lines",
       linesClass: "split-line",
