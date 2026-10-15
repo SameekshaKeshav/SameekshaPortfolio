@@ -15,7 +15,7 @@ export default function Work() {
         </p>
         <h2 id="work-heading" className="heading-xl rv-mask" style={{ ["--i" as string]: 1 }}>
           <span>
-            Eight projects, <span className="accent-italic">zero fluff.</span>
+            Nine projects, <span className="accent-italic">zero fluff.</span>
           </span>
         </h2>
 

@@ -141,6 +141,7 @@ export const SKILL_GROUPS: Skill[] = [
       "Bat-Eye Bioacoustics",
       "Enchantler",
       "Poker AI Arena",
+      "PulseMorph (WolfHacks)",
     ],
   },
   {
@@ -276,7 +277,7 @@ export const SKILL_GROUPS: Skill[] = [
     symbol: "Pe",
     name: "Prompt Engineering",
     family: "AI / ML",
-    usedIn: ["Tavant (Agentic AI travel chatbot)"],
+    usedIn: ["Tavant (Agentic AI travel chatbot)", "PulseMorph (WolfHacks)"],
   },
   {
     number: 20,
@@ -291,7 +292,7 @@ export const SKILL_GROUPS: Skill[] = [
     symbol: "Ag",
     name: "Agentic AI",
     family: "AI / ML",
-    usedIn: ["Tavant (Agentic AI travel chatbot)"],
+    usedIn: ["Tavant (Agentic AI travel chatbot)", "PulseMorph (WolfHacks)"],
   },
   {
     number: 22,
@@ -600,6 +601,27 @@ export const PROJECTS: Project[] = [
     tech: ["Python", "Flask", "Game Theory"],
     link: "https://github.com/skeshav2_ncstate/AI-FinalProject_PokerAgent",
     linkLabel: "View on GitHub ↗",
+    illustration: "agents",
+  },
+  {
+    id: "pulsemorph",
+    index: "09",
+    title: "PulseMorph — Risk Engine & Agent",
+    kicker: "WolfHacks team hackathon · Python / FastAPI / Gemini",
+    description:
+      "A 4-person hackathon team built a wearable-health dashboard that streams glucose, heart-rate and EDA data into a live 3D avatar. Owned the risk and AI layer: a Gemini-grounded glucose forecasting and recommendation engine, an autonomous risk-scoring agent, and the ElevenLabs voice integration.",
+    features: [
+      "Baseline per-person glucose-response model, built offline from each participant's own logged meals",
+      "Gemini-adjusted forecasts clamped to physiologically plausible bounds (±40 mg/dL of baseline, max 25 mg/dL per 5 min)",
+      "Heuristic 0–1 risk score blending glucose, 15-min glucose delta, heart rate and EDA into calm/rising/high bands",
+      "Gemini recommender for the next 20-minute slot across 6 lifestyle options, validated against the baseline model with a rule-based fallback",
+      "Natural-language intent parser (regex-first, Gemini fallback) turning phrases like \"let's go for a jog\" into a what-if choice",
+      "Autonomous risk agent: Gemini chooses which data tools to call, then returns a verdict + risk score, logged every ~120s per participant",
+      "ElevenLabs text-to-speech for the agent's voice, with per-minute rate limiting and response caching",
+    ],
+    tech: ["Python", "FastAPI", "Gemini API", "Agentic AI", "Prompt Engineering", "ElevenLabs"],
+    link: "https://app.pulsemorph.fit",
+    linkLabel: "View live site ↗",
     illustration: "agents",
   },
 ];
